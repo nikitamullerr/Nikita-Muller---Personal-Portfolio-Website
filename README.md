@@ -1,5 +1,5 @@
-# Nikita-Muller---Personal-Portfolio-Website
-# Nikita Müller | Personal Portfolio Website
+
+# Nikita Muller | Personal Portfolio Website
 
 ## Overview
 
