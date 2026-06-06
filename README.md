@@ -204,7 +204,7 @@ Aspiring Full Stack Web Developer
 
 ## Deployment
 
-GitHub Pages deployment link:
+GitHub Pages deployment link: 
 
 *To be added after deployment*
 
