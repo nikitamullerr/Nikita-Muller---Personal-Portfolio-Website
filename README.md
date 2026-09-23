@@ -1,230 +1,43 @@
+# Nikita Muller — Personal Portfolio
 
-# Nikita Muller | Personal Portfolio Website
+A responsive Vue 3 portfolio, built with Vite. The design follows the supplied dark portfolio reference with the original purple and lilac accents, glowing backgrounds, and rounded translucent panels. Profile, education, experience, and certifications are based on the supplied CV.
 
-## Overview
+## Development
 
-Welcome to my personal portfolio website! This project showcases my journey as an aspiring Full Stack Web Developer, highlighting my skills, education, projects, and passion for creating modern web experiences.
+Requires Node.js 20.19+ or 22.12+.
 
-Built using **HTML5** and **CSS3**, the website features a responsive design, interactive animations, and a cohesive purple/lilac theme that reflects my personal style.
+npm install
+npm run dev
 
----
+## Production
 
-## Purpose
+npm run build
+npm run preview
 
-This website serves as my professional online portfolio and demonstrates:
+Deploy the generated dist directory to a static host. Vite uses relative asset paths, including for GitHub Pages project sites. Configure Pages to deploy the built dist artifact, rather than serving the source branch directly.
 
-* My HTML and CSS development skills
-* My academic achievements and certifications
-* Projects I have completed and am currently developing
-* My growth as a future Full Stack Developer
-* A platform for potential employers, clients, and collaborators to contact me
+## Structure
 
-As I continue learning new technologies, this portfolio will evolve alongside my development journey.
+- src/App.vue: application shell and shared-state provider
+- src/views/PortfolioView.vue: page composition
+- src/components/: section, layout, control, card, project, and contact components
+- src/composables/: shared preferences, navigation, and project filtering
+- src/data/portfolio.js: editable portfolio content
+- src/locales/translations.json: translation dictionary
+- src/style.css: responsive layout and original color palette
+- src/main.js: Vue entry point
+- images/Nikita_Muller_Headshot.png: original portrait
+- vite.config.js: build configuration and redirects for the old HTML URLs
 
----
+The contact form preserves the existing Formspree endpoint and native browser validation. Successful submissions are handled by Formspree. The form is not sent during local verification.
 
-## Features
+The old HTML URLs redirect to the matching Vue sections in development and production. The original stylesheet remains as reference source.
 
-### Responsive Navigation
+## Visitor features
 
-* Sticky navigation bar
-* Smooth hover effects
-* Mobile-friendly layout
-
-### Hero Section
-
-* Animated floating background blobs
-* Morphing gradient profile image effect
-* Call-to-action buttons
-
-### About Me
-
-* Personal introduction
-* Interests and hobbies
-* Skills displayed as interactive tags
-
-### Education
-
-* Academic history table
-* Status indicators
-* Certificates and achievements section
-
-### Projects Gallery
-
-* Project cards with hover animations
-* Technology badges
-* Project descriptions
-
-### Contact Page
-
-* Contact form with validation
-* Contact information section
-* Responsive layout
-
-### Additional Features
-
-* Smooth transitions and hover effects
-* Glassmorphism navigation bar
-* Consistent purple/lilac colour palette
-* Mobile-responsive design
-
----
-
-## Technologies Used
-
-### HTML5
-
-* Semantic elements
-* Forms
-* Tables
-* Lists
-* Images
-* Navigation links
-* Proper document structure
-
-### CSS3
-
-* Flexbox
-* CSS Grid
-* Media Queries
-* CSS Variables
-* Animations
-* Transitions
-* Gradients
-* Box Shadows
-* Backdrop Filters
-* Responsive Design
-
----
-
-## Project Structure
-
-```text
-nikita-portfolio/
-├── index.html
-├── about.html
-├── education.html
-├── projects.html
-├── contact.html
-├── style.css
-├── images/
-│   └── profile.jpg
-└── README.md
-```
-
----
-
-## How to View the Project
-
-### Run Locally
-
-1. Download or clone the repository.
-2. Open the project folder.
-3. Launch `index.html` in any modern browser.
-
-No additional software or dependencies are required.
-
----
-
-## Challenges and Solutions
-
-### Animated Profile Blob
-
-Creating a smooth morphing blob animation behind the profile image required combining CSS keyframes, gradients, and border-radius transformations while maintaining performance.
-
-### Mobile-Friendly Tables
-
-The education table became difficult to read on smaller screens. A scrollable container with horizontal overflow solved the issue.
-
-### Consistent Colour Theme
-
-CSS custom properties were used to manage colours and gradients throughout the project, ensuring consistency across all pages.
-
-### Modern Form Design
-
-A professional contact form was built entirely with HTML and CSS without relying on external frameworks or libraries.
-
----
-
-## What I Learned
-
-### Technical Skills
-
-* CSS animations and transitions
-* Responsive web design
-* CSS Grid and Flexbox
-* Semantic HTML structure
-* CSS custom properties
-* Form creation and styling
-
-### Design Skills
-
-* Visual hierarchy
-* Colour theory
-* User experience principles
-* Consistent interface design
-
-### Problem Solving
-
-* Debugging layout issues
-* Improving responsiveness
-* Optimising animations
-
----
-
-## Future Improvements
-
-### Short-Term Goals
-
-* Add a downloadable CV
-* Add more icons
-* Have more pages, etc, project page
-
-### Medium-Term Goals
-
-* Implement JavaScript form functionality
-* Create a blog section
-* Add a dark/light mode toggle
-* Include additional projects
-
-### Long-Term Goals
-
-* Rebuild using React
-* Connect a backend for contact submissions
-
----
-
-## Author
-
-**Nikita Muller**
-
-Aspiring Full Stack Web Developer
-
----
-
-## Deployment
-
-GitHub Pages deployment link: 
-
-*To be added after deployment*
-
-### Deploying with GitHub Pages
-
-1. Push the project to GitHub.
-2. Navigate to **Settings → Pages**.
-3. Select the **main branch** as the source.
-4. Save the settings.
-5. GitHub will generate a public website URL.
-
----
-
-## Contact
-
-**Email:** [nikitamuller1005@gmail.com](mailto:nikitamuller1005@gmail.com)
-
-**GitHub:** [(https://github.com/nikitamullerr)]
-
-**LinkedIn:** [(https://www.linkedin.com/in/nikita-muller/)]
-
----
-
+- Light and dark themes: follows the system preference until a visitor chooses a theme.
+- English, Afrikaans, and isiXhosa: the language selector updates content, labels, and the document language. Names and technology brands stay unchanged. Translations live in src/locales/translations.json.
+- Theme and language preferences are saved locally when storage is available.
+- Search projects and filter by technology; clear filters when no results match.
+- Copy the contact email, follow reading progress, and jump back to the top.
+- Entrance and hover animations respect the reduced-motion preference.
