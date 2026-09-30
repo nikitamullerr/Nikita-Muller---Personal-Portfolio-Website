@@ -1,35 +1,22 @@
 <script setup>
 import { usePortfolio } from "../../composables/usePortfolio.js";
-import ProfileCard from "../cards/ProfileCard.vue";
+import ProfileAvatar from "../shared/ProfileAvatar.vue";
 const { t } = usePortfolio();
 </script>
 
 <template>
-  <section id="about" class="scene">
-    <div class="section-inner split">
-      <div class="section-copy">
-        <p class="eyebrow">{{ t("01 / PROFILE") }}</p>
-        <h2>
-          <span>{{ t("Business Systems Graduate.") }}</span
-          >{{ t("Developer in the Making.") }}
-        </h2>
-        <h3>{{ t("A degree that connects business and technology") }}</h3>
-        <p>
-          {{
-            t(
-              "I hold a Bachelor of IT in Business Systems from Rosebank College, completed in 2025. My degree built a foundation in business analysis, database systems, systems analysis and design, IT project management, and enterprise resource planning.",
-            )
-          }}
-        </p>
-        <p>
-          {{
-            t(
-              "I am now extending that foundation through a six-month Full Stack Web Development programme at Life Choices Academy, gaining hands-on skills in HTML, CSS, JavaScript, Python, and Vue.js.",
-            )
-          }}
-        </p>
-      </div>
-      <ProfileCard />
+  <div id="about" class="hero-profile glass">
+    <ProfileAvatar size="large" alt="Portrait of Nikita Muller" />
+    <div class="section-copy">
+      <h2>{{ t("A little about me") }}</h2>
+      <p>
+        {{ t("I graduated from Rosebank College in 2025 with a Bachelor of IT in Business Systems. I am now developing my full stack skills at Life Choices Academy.") }}
+      </p>
     </div>
-  </section>
+  </div>
 </template>
+
+<style scoped>
+.hero-profile > .avatar { width: 168px; height: 168px; border-width: 2px; box-shadow: 0 0 0 8px #c8a2d60a; }
+.hero-profile :deep(.avatar img) { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; transform: scale(1.8); transform-origin: 50% 80%; }
+</style>

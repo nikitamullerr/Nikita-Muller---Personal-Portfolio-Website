@@ -19,7 +19,7 @@ export function useNavigation() {
       { rootMargin: "-15% 0px -55% 0px" },
     );
     document
-      .querySelectorAll("main > section[id]")
+      .querySelectorAll("main > section[id], #about")
       .forEach((section) => observer.observe(section));
     const legacy = window.location.pathname.match(
       /\/(about|education|contact)\.html$/,

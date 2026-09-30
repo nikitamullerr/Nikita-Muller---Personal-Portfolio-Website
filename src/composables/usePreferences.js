@@ -32,10 +32,7 @@ export function usePreferences() {
         ? "dark"
         : "light",
   );
-  const storedLocale = readPreference("portfolio-language");
-  const locale = ref(
-    languages.some((item) => item.code === storedLocale) ? storedLocale : "en",
-  );
+  const locale = ref("en");
   const scrollProgress = ref(0);
   const copyStatus = ref("");
   const t = (text) =>
