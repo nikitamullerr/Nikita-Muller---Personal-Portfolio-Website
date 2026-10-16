@@ -10,25 +10,11 @@ const paused = ref(false);
     <svg class="moving-illustration" aria-hidden="true"
       viewBox="0 0 320 320"
       fill="none"
-      stroke="url(#tech-gradient)"
+      stroke="#c8a2d6"
       stroke-width="7"
       stroke-linecap="round"
       stroke-linejoin="round"
     >
-      <defs>
-        <linearGradient
-          id="tech-gradient"
-          x1="50"
-          y1="30"
-          x2="280"
-          y2="290"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-color="#e1c6f0" />
-          <stop offset=".5" stop-color="#c8a2d6" />
-          <stop offset="1" stop-color="#8b5f9e" />
-        </linearGradient>
-      </defs>
       <rect x="42" y="40" width="15" height="15" rx="4" />
       <rect x="73" y="40" width="15" height="15" rx="4" />
       <rect x="104" y="40" width="15" height="15" rx="4" />

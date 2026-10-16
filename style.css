@@ -17,17 +17,11 @@
   --shadow-md: 0 8px 25px rgba(106, 62, 122, 0.12);
   --shadow-hover: 0 20px 35px -12px rgba(106, 62, 122, 0.25);
   --transition: all 0.3s ease;
-  
-  /* Purple gradient colors */
-  --gradient-start: #8b5f9e;
-  --gradient-middle: #c8a2d6;
-  --gradient-end: #6b3e7a;
-  --gradient-light: #e1c6f0;
 }
 
 body {
   font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #faf5ff 0%, #f0e6f5 100%);
+  background: #faf5ff;
   color: var(--text-dark);
   line-height: 1.5;
   min-height: 100vh;
@@ -58,10 +52,7 @@ body {
 .logo {
   font-size: 1.6rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: var(--primary-purple);
   letter-spacing: -0.5px;
 }
 
@@ -89,7 +80,7 @@ body {
   left: 0;
   width: 0%;
   height: 2px;
-  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle));
+  background: var(--primary-purple);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
@@ -101,13 +92,10 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: var(--primary-purple);
 }
 
-/* ========== BUTTONS WITH GRADIENTS ========== */
+/* ========== BUTTONS ========== */
 .btn {
   display: inline-block;
   padding: 0.7rem 1.8rem;
@@ -120,13 +108,13 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+  background: var(--primary-purple);
   color: white;
   border: none;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--gradient-end), var(--gradient-start));
+  background: var(--dark-purple);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
@@ -138,14 +126,14 @@ body {
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+  background: var(--primary-purple);
   color: white;
   border: 2px solid transparent;
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
-/* ========== HERO SECTION WITH PURPLE GRADIENTS ========== */
+/* ========== HERO SECTION ========== */
 .hero {
   min-height: 85vh;
   display: flex;
@@ -153,78 +141,6 @@ body {
   position: relative;
   overflow: hidden;
   padding: 2rem 0;
-  background: linear-gradient(145deg, 
-    rgba(139, 95, 158, 0.05) 0%,
-    rgba(200, 162, 214, 0.08) 50%,
-    rgba(107, 62, 122, 0.05) 100%);
-}
-
-/* Gradient overlay on hero */
-.gradient-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(200, 162, 214, 0.15), transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Floating gradient blobs */
-.bg-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.5;
-  z-index: 0;
-  animation: floatBlob 15s ease-in-out infinite;
-}
-
-.bg-blob-1 {
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, #c8a2d6, #8b5f9e);
-  top: 10%;
-  left: -100px;
-  animation-delay: 0s;
-  opacity: 0.4;
-}
-
-.bg-blob-2 {
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, #e1c6f0, #b38fcf);
-  bottom: 10%;
-  right: -80px;
-  animation-delay: 3s;
-  opacity: 0.35;
-}
-
-.bg-blob-3 {
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, #dbb9ed, #aa7bc4);
-  top: 50%;
-  right: 20%;
-  animation-delay: 6s;
-  opacity: 0.3;
-}
-
-.bg-blob-4 {
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, #c8a2d6, #6b3e7a);
-  bottom: 30%;
-  left: 10%;
-  animation-delay: 9s;
-  opacity: 0.25;
-}
-
-@keyframes floatBlob {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(20px, -30px) scale(1.05); }
-  66% { transform: translate(-15px, 20px) scale(0.98); }
 }
 
 .hero-content {
@@ -246,13 +162,6 @@ body {
   font-size: 3.2rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-}
-
-.purple-gradient-text {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
 }
 
 .hero-text h2 {
@@ -298,10 +207,9 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #c8a2d6, #8b5f9e, #e1c6f0, #b38fcf);
-  background-size: 300% 300%;
+  background: var(--primary-lilac);
   border-radius: 60% 40% 55% 45% / 48% 38% 62% 52%;
-  animation: morphBlob 8s ease-in-out infinite, gradientShift 6s ease infinite;
+  animation: morphBlob 8s ease-in-out infinite;
   z-index: 0;
 }
 
@@ -318,11 +226,6 @@ body {
   75% {
     border-radius: 55% 45% 50% 50% / 40% 55% 45% 60%;
   }
-}
-
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
 }
 
 /* Larger image circle - sits on top of the blob */
@@ -358,7 +261,7 @@ body {
 
 /* ========== PAGE HEADER (Inner Pages) ========== */
 .page-header {
-  background: linear-gradient(135deg, #e9daf5, #f0e6f5);
+  background: #f0e6f5;
   padding: 3rem 0 2rem;
   text-align: center;
 }
@@ -366,10 +269,7 @@ body {
 .page-title {
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #6b3e7a, #aa7bc4);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: var(--dark-purple);
   margin-bottom: 0.5rem;
 }
 
@@ -395,7 +295,7 @@ body {
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary-lilac), var(--primary-purple));
+  background: var(--primary-purple);
   border-radius: 3px;
 }
 
@@ -509,7 +409,7 @@ body {
 /* ========== QUOTE SECTION (About Page) ========== */
 .quote-section {
   padding: 3rem 0 4rem;
-  background: linear-gradient(135deg, #f3ecf8, #faf5ff);
+  background: #faf5ff;
 }
 
 .quote-card {
@@ -674,7 +574,7 @@ body {
 }
 
 .project-img {
-  background: linear-gradient(135deg, #e1c6f0, #c89de0);
+  background: #e1c6f0;
   height: 180px;
   display: flex;
   align-items: center;
@@ -740,7 +640,7 @@ body {
 }
 
 .cta-card {
-  background: linear-gradient(135deg, #e9daf5, #f0e6f5);
+  background: #f0e6f5;
   border-radius: 28px;
   padding: 2rem;
   text-align: center;
@@ -827,7 +727,7 @@ body {
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+  background: var(--primary-purple);
   border: none;
   padding: 0.85rem 2rem;
   font-weight: 600;
@@ -841,7 +741,7 @@ body {
 }
 
 .submit-btn:hover {
-  background: linear-gradient(135deg, var(--gradient-end), var(--gradient-start));
+  background: var(--dark-purple);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
@@ -957,7 +857,7 @@ body {
 }
 
 .availability-card {
-  background: linear-gradient(135deg, #e9daf5, #f0e6f5);
+  background: #f0e6f5;
   border-radius: 28px;
   padding: 1.2rem 1.8rem;
   text-align: center;

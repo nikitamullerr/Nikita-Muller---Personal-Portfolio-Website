@@ -6,11 +6,8 @@ const { t } = usePortfolio();
 
 <template>
   <div class="section-copy">
-    <p class="eyebrow">{{ t("06 / CONTACT") }}</p>
-    <h2>
-      <span>{{ t("Let’s Build") }}</span
-      >{{ t("Something Great") }}
-    </h2>
+    <p class="eyebrow">{{ t("END CREDITS") }}</p>
+    <h2>{{ t("Thanks for watching.") }}</h2>
     <p>
       {{
         t(

@@ -1,16 +1,32 @@
 <script setup>
 import { usePortfolio } from "../../composables/usePortfolio.js";
-defineProps({ certificate: { type: Object, required: true } });
+defineProps({
+  certificate: { type: Object, required: true },
+  isNew: { type: Boolean, default: false },
+});
+const emit = defineEmits(["select"]);
 const { t } = usePortfolio();
 </script>
 
 <template>
-  <article class="glass">
-    <span class="certificate-icon" aria-hidden="true">✧</span>
-    <div>
-      <h3>{{ t(certificate.title) }}</h3>
-      <p>{{ t(certificate.place) }}</p>
-    </div>
-    <span class="eyebrow">{{ t(certificate.date) }}</span>
+  <article class="certificate-card">
+    <button
+      class="certificate-poster"
+      :class="`certificate-poster--${certificate.issuerKey}`"
+      type="button"
+      :aria-label="`${t('View details')}: ${t(certificate.title)}`"
+      @click="emit('select', certificate)"
+    >
+      <span v-if="isNew" class="certificate-new-badge">{{ t("NEW") }}</span>
+      <span class="certificate-monogram" aria-hidden="true">{{ certificate.issuerMonogram }}</span>
+      <span class="certificate-poster-copy">
+        <span class="certificate-poster-title">{{ t(certificate.title) }}</span>
+        <span class="certificate-poster-issuer">
+          {{ t(certificate.issuer) }} <span aria-hidden="true">·</span> {{ t(certificate.issueDate) }}
+        </span>
+      </span>
+      <span class="certificate-category">{{ t(certificate.category) }}</span>
+      <span class="certificate-view-details">{{ t("View details") }} <span aria-hidden="true">↗</span></span>
+    </button>
   </article>
 </template>

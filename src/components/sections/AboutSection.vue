@@ -1,22 +1,33 @@
 <script setup>
 import { usePortfolio } from "../../composables/usePortfolio.js";
-import ProfileAvatar from "../shared/ProfileAvatar.vue";
+import { strengths } from "../../data/portfolio.js";
 const { t } = usePortfolio();
 </script>
 
 <template>
-  <div id="about" class="hero-profile glass">
-    <ProfileAvatar size="large" alt="Portrait of Nikita Muller" />
-    <div class="section-copy">
-      <h2>{{ t("A little about me") }}</h2>
-      <p>
-        {{ t("I graduated from Rosebank College in 2025 with a Bachelor of IT in Business Systems. I am now developing my full stack skills at Life Choices Academy.") }}
-      </p>
-    </div>
-  </div>
+ <section id="about" class="scene about-section">
+   <div class="section-inner">
+     <div class="about-layout">
+       <div class="section-copy about-copy">
+         <p class="eyebrow">{{ t("BEHIND THE SCREEN") }}</p>
+         <h2>{{ t("The origin story.") }}</h2>
+         <p>
+           {{ t("I’m Nikita, a business systems graduate with a growing love for development. I graduated from Rosebank College in 2025 with a Bachelor of IT in Business Systems, and I’m now developing my full stack skills at Life Choices Academy.") }}
+         </p>
+         <p>
+           {{ t("I bring analytical thinking, curiosity, and a people-first perspective to everything I build. My story is still unfolding — and I’m excited for the next chapter.") }}
+         </p>
+         <div class="strength-tags">
+           <span v-for="strength in strengths" :key="strength">{{ t(strength) }}</span>
+         </div>
+       </div>
+       <div class="profile-facts">
+         <div><strong>5</strong><span>{{ t("Projects & counting") }}</span></div>
+         <div><strong>BIT</strong><span>{{ t("Business Systems graduate") }}</span></div>
+         <div><strong>{{ t("Cape Town") }}</strong><span>{{ t("My home base") }}</span></div>
+         <div><strong>∞</strong><span>{{ t("Curiosity for what’s next") }}</span></div>
+       </div>
+     </div>
+   </div>
+ </section>
 </template>
-
-<style scoped>
-.hero-profile > .avatar { width: 168px; height: 168px; border-width: 2px; box-shadow: 0 0 0 8px #c8a2d60a; }
-.hero-profile :deep(.avatar img) { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; transform: scale(1.8); transform-origin: 50% 80%; }
-</style>
