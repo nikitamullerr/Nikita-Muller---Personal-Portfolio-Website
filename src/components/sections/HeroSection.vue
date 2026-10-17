@@ -1,8 +1,22 @@
 <script setup>
+import { ref } from "vue";
 import { usePortfolio } from "../../composables/usePortfolio.js";
 import { showPlayButton } from "../../data/portfolio.js";
-import ProfileAvatar from "../shared/ProfileAvatar.vue";
+
 const { t, navigate } = usePortfolio();
+const trailerDialog = ref(null);
+const trailerVideo = ref(null);
+
+function openTrailer() {
+  trailerDialog.value?.showModal();
+  trailerVideo.value?.play().catch(() => {});
+}
+
+function closeTrailer() {
+  trailerVideo.value?.pause();
+  if (trailerVideo.value) trailerVideo.value.currentTime = 0;
+  trailerDialog.value?.close();
+}
 </script>
 
 <template>
@@ -24,34 +38,49 @@ const { t, navigate } = usePortfolio();
             </svg>
             {{ t("Award-winning") }}
           </span>
-          <span>{{ t("Web · Python · Systems") }}</span>
+          <span>{{ t("Web Â· Python Â· Systems") }}</span>
         </div>
         <p class="hero-role">{{ t("Business mind. Developer heart.") }}</p>
         <p class="hero-description">
-          {{
-            t(
-              "Connecting business insight with technology to build thoughtful web experiences.",
-            )
-          }}
+          {{ t("Connecting business insight with technology to build thoughtful web experiences.") }}
         </p>
         <div class="hero-actions">
-          <a
-            v-if="showPlayButton"
-            class="hero-contact hero-play"
-            href="#portfolio"
-            @click="navigate('portfolio')"
-          >
-            <span aria-hidden="true">▶</span> {{ t("Play") }}
-          </a>
+          <button v-if="showPlayButton" class="hero-contact hero-play" type="button" @click="openTrailer">
+            <span aria-hidden="true">▶</span> {{ t("Watch Trailer") }}
+          </button>
           <a class="hero-contact hero-more" href="#about" @click="navigate('about')">
             <span aria-hidden="true">ⓘ</span> {{ t("More Info") }}
           </a>
         </div>
       </div>
-      <div class="hero-portrait">
-        <ProfileAvatar size="large" alt="Portrait of Nikita Muller" />
-        <span class="portrait-location"><span aria-hidden="true">⌖</span> {{ t("Cape Town, South Africa") }}</span>
-      </div>
     </div>
+    <dialog
+      ref="trailerDialog"
+      class="trailer-dialog"
+      :aria-label="t('Nikita Muller official trailer')"
+      @click.self="closeTrailer"
+      @close="trailerVideo?.pause()"
+    >
+      <button class="trailer-close" type="button" :aria-label="t('Close trailer')" @click="closeTrailer">
+        <span aria-hidden="true">×</span> {{ t("Close") }}
+      </button>
+      <div class="trailer-heading">
+        <span class="trailer-mark" aria-hidden="true">N</span>
+        <div>
+          <p>{{ t("A NIKITA ORIGINAL") }}</p>
+          <h2>{{ t("Nikita Muller official trailer") }}</h2>
+        </div>
+      </div>
+      <video
+        ref="trailerVideo"
+        class="trailer-video"
+        src="/videos/Brown-Vintage-90s-Coming-Soon-Video.mp4"
+        controls
+        autoplay
+        playsinline
+        preload="metadata"
+        :aria-label="t('Nikita Muller official trailer')"
+      />
+    </dialog>
   </section>
 </template>

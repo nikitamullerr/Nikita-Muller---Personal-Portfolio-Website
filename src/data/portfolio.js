@@ -6,7 +6,7 @@ export const links = [
   { id: "technology", label: "Skills" },
   { id: "education", label: "My journey" },
 ];
-export const showPlayButton = false;
+export const showPlayButton = true;
 
 export const skillGroups = [
   { name: "Web development", skills: ["HTML & CSS", "JavaScript", "Vue.js"] },
