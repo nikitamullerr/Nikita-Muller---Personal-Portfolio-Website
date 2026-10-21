@@ -17,6 +17,7 @@ const { t } = usePortfolio();
       :aria-label="`${t('View details')}: ${t(certificate.title)}`"
       @click="emit('select', certificate)"
     >
+      <img class="certificate-preview" :src="certificate.image" alt="" aria-hidden="true" />
       <span v-if="isNew" class="certificate-new-badge">{{ t("NEW") }}</span>
       <span class="certificate-monogram" aria-hidden="true">{{ certificate.issuerMonogram }}</span>
       <span class="certificate-poster-copy">

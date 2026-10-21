@@ -28,7 +28,31 @@ const selectedJourney = ref(null);
 const selectedJourneySeason = ref(0);
 const educationCarousel = ref(null);
 const experienceCarousel = ref(null);
+const likedExperiencesStorageKey = "portfolio-liked-experiences";
 let dateRefreshTimer;
+
+function loadLikedExperienceTitles() {
+  try {
+    const storedTitles = localStorage.getItem(likedExperiencesStorageKey);
+    if (!storedTitles) return new Set();
+    const parsedTitles = JSON.parse(storedTitles);
+    if (!Array.isArray(parsedTitles)) {
+      throw new TypeError("Stored liked experiences must be an array.");
+    }
+    return new Set(
+      parsedTitles.filter(
+        (title) =>
+          typeof title === "string" &&
+          experiences.some((experience) => experience.title === title),
+      ),
+    );
+  } catch (error) {
+    console.error("Unable to load liked experiences from local storage.", error);
+    return new Set();
+  }
+}
+
+const likedExperienceTitles = ref(loadLikedExperienceTitles());
 
 function dateRank(item) {
   const [year, month = "0"] = item.sortDate.split("-");
@@ -97,6 +121,24 @@ function scrollSeasonRow(row, direction) {
 function setCertificateFilter(filter) {
   activeCertificateFilter.value = filter;
   nextTick(() => certificateCarousel.value?.scrollTo({ left: 0, behavior: "auto" }));
+}
+
+function toggleExperienceLike(item) {
+  const nextLikedTitles = new Set(likedExperienceTitles.value);
+  if (nextLikedTitles.has(item.title)) {
+    nextLikedTitles.delete(item.title);
+  } else {
+    nextLikedTitles.add(item.title);
+  }
+  likedExperienceTitles.value = nextLikedTitles;
+  try {
+    localStorage.setItem(
+      likedExperiencesStorageKey,
+      JSON.stringify([...nextLikedTitles]),
+    );
+  } catch (error) {
+    console.error("Unable to save liked experiences to local storage.", error);
+  }
 }
 
 async function openCertificate(certificate) {
@@ -184,15 +226,37 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
             </div>
           </div>
           <div ref="experienceCarousel" class="season-carousel" tabindex="0" :aria-label="t('Experience timeline carousel')">
-            <JourneyCard
+            <div
               v-for="(item, index) in experienceCards"
               :key="`${item.type}-${item.title}`"
-              :item="item"
-              :season-number="index + 1"
-              :is-most-recent="item === newestExperience"
-              class="season-card"
-              @select="openJourney(item, index + 1)"
-            />
+              class="season-card-item"
+              :class="{ 'season-card-item--likable': item.type !== 'coming-soon' }"
+            >
+              <JourneyCard
+                :item="item"
+                :season-number="index + 1"
+                :is-most-recent="item === newestExperience"
+                class="season-card"
+                @select="openJourney(item, index + 1)"
+              />
+              <div v-if="item.type !== 'coming-soon'" class="season-like-control">
+                <button
+                  class="season-like-button"
+                  :class="{ 'is-liked': likedExperienceTitles.has(item.title) }"
+                  type="button"
+                  :aria-label="`${t(likedExperienceTitles.has(item.title) ? 'Unlike' : 'Like')} ${t(item.title)}`"
+                  :aria-pressed="likedExperienceTitles.has(item.title)"
+                  @click="toggleExperienceLike(item)"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" />
+                  </svg>
+                </button>
+                <span v-if="likedExperienceTitles.has(item.title)" class="season-like-status" aria-live="polite">
+                  {{ t("Added to My List") }}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -285,6 +349,11 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
           @click="closeCertificate"
         >×</button>
         <div class="dialog-content">
+          <img
+            class="certificate-dialog-image"
+            :src="selectedCertificate.image"
+            :alt="t(selectedCertificate.title)"
+          />
           <p class="eyebrow">{{ t("CERTIFICATE DETAILS") }}</p>
           <h2 id="certificate-dialog-title">{{ t(selectedCertificate.title) }}</h2>
           <dl class="certificate-detail-list">

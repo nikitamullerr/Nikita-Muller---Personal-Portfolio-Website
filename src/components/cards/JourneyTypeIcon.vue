@@ -29,7 +29,10 @@ defineProps({
     fill="none"
     aria-hidden="true"
   >
-    <path d="M24 41 7.5 25.2C-1 16.5 11.5 4 20 12.5L24 16l4-3.5c8.5-8.5 21 4 12.5 12.7L24 41Z" />
+    <circle cx="24" cy="13" r="6" />
+    <circle cx="10" cy="19" r="4" />
+    <circle cx="38" cy="19" r="4" />
+    <path d="M12 40v-4a12 12 0 0 1 24 0v4m-29 0v-3a8 8 0 0 1 8-8m30 11v-3a8 8 0 0 0-8-8" />
   </svg>
   <svg
     v-else

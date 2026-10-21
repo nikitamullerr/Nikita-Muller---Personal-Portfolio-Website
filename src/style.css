@@ -770,6 +770,18 @@ html { scroll-padding-top: 80px; }
   color: #f4f4f4;
   text-align: left;
 }
+.certificate-preview {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .22s ease;
+}
 .certificate-poster--aws { background: linear-gradient(135deg, #462510 0%, #261a14 42%, #121314 100%); }
 .certificate-poster--cisco { background: linear-gradient(135deg, #123047 0%, #18232c 42%, #121314 100%); }
 .certificate-monogram {
@@ -792,6 +804,7 @@ html { scroll-padding-top: 80px; }
 .certificate-poster--cisco .certificate-monogram { font-size: 18px; }
 .certificate-new-badge {
   position: absolute;
+  z-index: 2;
   top: 15px;
   right: 15px;
   padding: 5px 8px;
@@ -808,6 +821,7 @@ html { scroll-padding-top: 80px; }
 .certificate-category { padding: 4px 7px; border: 1px solid #ffffff30; border-radius: 3px; background: #10111290; color: #f4f4f4; font-size: 8px; }
 .certificate-view-details {
   position: absolute;
+  z-index: 2;
   right: 14px;
   bottom: 14px;
   display: inline-flex;
@@ -825,9 +839,23 @@ html { scroll-padding-top: 80px; }
 .certificate-detail-list > div { padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 .certificate-detail-list dt { margin-bottom: 5px; color: var(--muted); font-size: 9px; }
 .certificate-detail-list dd { margin: 0; color: var(--light); font-size: 12px; }
+.certificate-dialog-image {
+  display: block;
+  width: 100%;
+  max-height: min(48vh, 440px);
+  margin-bottom: 26px;
+  border: 1px solid #ffffff24;
+  border-radius: 6px;
+  background: #09090a;
+  object-fit: contain;
+}
 @media (hover: hover) and (pointer: fine) {
   .certificate-card:hover,
   .certificate-card:focus-within { z-index: 2; transform: scale(1.05); box-shadow: 0 16px 36px #f20d3a2b; }
+  .certificate-card:hover .certificate-preview,
+  .certificate-card:focus-within .certificate-preview { opacity: 1; }
+  .certificate-card:hover .certificate-monogram,
+  .certificate-card:focus-within .certificate-monogram { opacity: 0; }
   .certificate-view-details { opacity: 0; transform: translateY(4px); }
   .certificate-card:hover .certificate-view-details,
   .certificate-card:focus-within .certificate-view-details { opacity: 1; transform: translateY(0); }
@@ -854,6 +882,7 @@ html { scroll-padding-top: 80px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .certificate-card,
+  .certificate-preview,
   .certificate-view-details { transition: none; }
   .certificate-carousel { scroll-behavior: auto; }
 }
@@ -1404,6 +1433,51 @@ html { scroll-padding-top: 80px; }
   opacity: 1;
   transform: translateY(0);
 }
+.season-card-item {
+  display: flex;
+  flex: 0 0 clamp(320px, 36%, 380px);
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+.season-card-item > .season-card { flex: 0 0 356px; width: 100%; }
+.season-card-item--likable { flex-basis: clamp(320px, 36%, 380px); }
+.season-like-control {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  align-self: flex-end;
+  gap: 9px;
+}
+.season-like-button {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  align-self: flex-end;
+  padding: 0;
+  border: 1px solid #ffffff30;
+  border-radius: 50%;
+  background: #18191b;
+  color: #c2c2c5;
+  cursor: pointer;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease, transform .18s ease;
+}
+.season-like-button svg { width: 19px; height: 19px; fill: transparent; stroke: currentColor; stroke-width: 1.8; }
+.season-like-button:hover,
+.season-like-button.is-liked { border-color: #e50914; color: #e50914; }
+.season-like-button.is-liked svg { fill: currentColor; }
+.season-like-button:hover { transform: scale(1.1); }
+.season-like-button.is-liked { background: #e509141a; }
+.season-like-button:focus-visible { outline: 2px solid var(--primary-lilac); outline-offset: 3px; }
+.season-like-status {
+  color: #e50914;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
 .season-card:focus-visible {
   outline: 2px solid var(--primary-lilac);
   outline-offset: 4px;
@@ -1476,6 +1550,8 @@ html { scroll-padding-top: 80px; }
     scroll-padding-inline: 24px;
   }
   .season-card { flex-basis: min(82vw, 340px); }
+  .season-card-item,
+  .season-card-item--likable { flex-basis: min(82vw, 340px); }
   .season-more-info { opacity: 1; transform: none; }
   .journey-dialog-heading { flex-direction: column-reverse; }
 }
@@ -1488,4 +1564,15 @@ html { scroll-padding-top: 80px; }
     box-shadow: none;
   }
   .season-carousel { scroll-behavior: auto; }
+}
+
+@media (max-width: 430px) {
+  .season-carousel {
+    margin-inline: -16px;
+    padding-inline: 16px;
+    scroll-padding-inline: 16px;
+  }
+  .season-card { flex-basis: min(calc(100vw - 48px), 340px); }
+  .season-card-item,
+  .season-card-item--likable { flex-basis: min(calc(100vw - 48px), 340px); }
 }

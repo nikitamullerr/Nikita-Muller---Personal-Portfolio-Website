@@ -76,7 +76,6 @@ function closeTrailer() {
         class="trailer-video"
         src="/videos/Brown-Vintage-90s-Coming-Soon-Video.mp4"
         controls
-        autoplay
         playsinline
         preload="metadata"
         :aria-label="t('Nikita Muller official trailer')"

@@ -1,3 +1,9 @@
+import responsibleAiCertificate from "../../images/Responsible Artficial Intelligence Practices Certificate.png";
+import machineLearningCertificate from "../../images/Fundamentals of Machine Learning and Artficial Intelligence.png";
+import promptEngineeringCertificate from "../../images/Essentials of Prompt Engineering.png";
+import cybersecurityCertificate from "../../images/Introduction to Cybersecurity.png";
+import dataScienceCertificate from "../../images/Introduction to Data Science.png";
+
 export const links = [
   { id: "home", label: "Home" },
   { id: "portfolio", label: "Projects" },
@@ -248,6 +254,7 @@ export const certificates = [
     issueDate: "Oct 2026",
     issueMonth: "2026-10",
     category: "AI",
+    image: responsibleAiCertificate,
     learned: "",
   },
   {
@@ -258,6 +265,7 @@ export const certificates = [
     issueDate: "Oct 2026",
     issueMonth: "2026-10",
     category: "AI",
+    image: machineLearningCertificate,
     learned: "",
   },
   {
@@ -268,6 +276,7 @@ export const certificates = [
     issueDate: "Sep 2026",
     issueMonth: "2026-09",
     category: "AI",
+    image: promptEngineeringCertificate,
     learned: "",
   },
   {
@@ -278,6 +287,7 @@ export const certificates = [
     issueDate: "Aug 2026",
     issueMonth: "2026-08",
     category: "Cybersecurity",
+    image: cybersecurityCertificate,
     learned: "",
   },
   {
@@ -288,6 +298,7 @@ export const certificates = [
     issueDate: "Apr 2026",
     issueMonth: "2026-04",
     category: "Data",
+    image: dataScienceCertificate,
     learned: "",
   },
 ];
