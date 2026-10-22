@@ -64,7 +64,7 @@ export const projects = [
     match: "98%",
     rating: "DEV",
     role: "My contribution: Find a Tutor page",
-    liveUrl: "TODO: add live demo URL",
+    liveUrl: "https://nikitamullerr.github.io/HTML_CSS_JavaScript_Showcase/",
     githubUrl: "https://github.com/nikitamullerr/HTML_CSS_JavaScript_Showcase",
     caseStudy: {
       problem: "TODO: add problem statement",
@@ -82,7 +82,7 @@ export const projects = [
     match: "96%",
     rating: "DEV",
     role: "Group project",
-    liveUrl: "TODO: add live demo URL",
+    liveUrl: "https://safeher-e-commerce.onrender.com/",
     githubUrl: "https://github.com/nikitamullerr/SafeHer_E-commerce-Project",
     caseStudy: {
       problem: "TODO: add problem statement",
@@ -118,7 +118,7 @@ export const projects = [
     match: "92%",
     rating: "DEV",
     role: "Team Leader · Agile Scrum capstone",
-    liveUrl: "TODO: add live demo URL",
+    liveUrl: "https://team-alpha-1.onrender.com/",
     githubUrl: "https://github.com/nikitamullerr/team-alpha-web-scraping",
     caseStudy: {
       problem: "TODO: add problem statement",
@@ -136,7 +136,7 @@ export const projects = [
     match: "90%",
     rating: "DEV",
     role: "My modules: authentication, attendance & time off",
-    liveUrl: "TODO: add live demo URL",
+    liveUrl: "https://nikitamullerr.github.io/HR_System-Group-4/",
     githubUrl: "https://github.com/nikitamullerr/Group-4_HRSystem_Project2",
     caseStudy: {
       problem: "TODO: add problem statement",

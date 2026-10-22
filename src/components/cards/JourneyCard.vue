@@ -4,7 +4,7 @@ import JourneyTypeIcon from "./JourneyTypeIcon.vue";
 
 defineProps({
   item: { type: Object, required: true },
-  seasonNumber: { type: Number, default: 0 },
+  episodeNumber: { type: Number, default: 0 },
   isMostRecent: { type: Boolean, default: false },
 });
 const emit = defineEmits(["select"]);
@@ -33,7 +33,7 @@ function badgeLabel(type) {
     @click="emit('select', item)"
   >
     <span class="season-poster">
-      <span class="season-number" aria-hidden="true">S{{ seasonNumber }}</span>
+      <span class="episode-number" aria-hidden="true">E{{ episodeNumber }}</span>
       <JourneyTypeIcon :type="item.type" />
       <span v-if="isMostRecent" class="season-recent">{{ t("Most recent") }}</span>
     </span>

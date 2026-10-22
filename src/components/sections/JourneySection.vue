@@ -25,9 +25,7 @@ const selectedCertificate = ref(null);
 const journeyDialog = ref(null);
 const journeyCloseButton = ref(null);
 const selectedJourney = ref(null);
-const selectedJourneySeason = ref(0);
-const educationCarousel = ref(null);
-const experienceCarousel = ref(null);
+const selectedJourneyEpisode = ref(0);
 const likedExperiencesStorageKey = "portfolio-liked-experiences";
 let dateRefreshTimer;
 
@@ -94,30 +92,6 @@ function refreshTodayAtMidnight() {
   );
 }
 
-function scrollCertificates(direction) {
-  const firstCard = certificateCarousel.value?.querySelector(".certificate-card");
-  if (!firstCard) return;
-  const gap = Number.parseFloat(getComputedStyle(certificateCarousel.value).columnGap) || 0;
-  certificateCarousel.value.scrollBy({
-    left: direction * (firstCard.getBoundingClientRect().width + gap),
-    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? "auto"
-      : "smooth",
-  });
-}
-
-function scrollSeasonRow(row, direction) {
-  const firstCard = row.value?.querySelector(".season-card");
-  if (!firstCard) return;
-  const gap = Number.parseFloat(getComputedStyle(row.value).columnGap) || 0;
-  row.value.scrollBy({
-    left: direction * (firstCard.getBoundingClientRect().width + gap),
-    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? "auto"
-      : "smooth",
-  });
-}
-
 function setCertificateFilter(filter) {
   activeCertificateFilter.value = filter;
   nextTick(() => certificateCarousel.value?.scrollTo({ left: 0, behavior: "auto" }));
@@ -150,9 +124,9 @@ async function openCertificate(certificate) {
   }
 }
 
-async function openJourney(item, seasonNumber) {
+async function openJourney(item, episodeNumber) {
   selectedJourney.value = item;
-  selectedJourneySeason.value = seasonNumber;
+  selectedJourneyEpisode.value = episodeNumber;
   await nextTick();
   if (journeyDialog.value && !journeyDialog.value.open) {
     journeyDialog.value.showModal();
@@ -187,23 +161,15 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
           <div class="season-row-heading">
             <div class="season-heading-copy">
               <p class="eyebrow">{{ t("EDUCATION") }}</p>
-              <h3>{{ t("Season 1: Learning") }}</h3>
-            </div>
-            <div class="carousel-arrows season-arrows">
-              <button type="button" :aria-label="t('Previous education')" @click="scrollSeasonRow(educationCarousel, -1)">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
-              </button>
-              <button type="button" :aria-label="t('Next education')" @click="scrollSeasonRow(educationCarousel, 1)">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-              </button>
+              <h3>{{ t("Learning") }}</h3>
             </div>
           </div>
-          <div ref="educationCarousel" class="season-carousel" tabindex="0" :aria-label="t('Education timeline carousel')">
+          <div class="season-carousel" tabindex="0" :aria-label="t('Education timeline carousel')">
             <JourneyCard
               v-for="(item, index) in educationCards"
               :key="`${item.type}-${item.title}`"
               :item="item"
-              :season-number="index + 1"
+              :episode-number="index + 1"
               :is-most-recent="item === newestEducation"
               class="season-card"
               @select="openJourney(item, index + 1)"
@@ -214,18 +180,10 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
           <div class="season-row-heading">
             <div class="season-heading-copy">
               <p class="eyebrow">{{ t("EXPERIENCE") }}</p>
-              <h3>{{ t("Season 2: Working") }}</h3>
-            </div>
-            <div class="carousel-arrows season-arrows">
-              <button type="button" :aria-label="t('Previous experience')" @click="scrollSeasonRow(experienceCarousel, -1)">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
-              </button>
-              <button type="button" :aria-label="t('Next experience')" @click="scrollSeasonRow(experienceCarousel, 1)">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-              </button>
+              <h3>{{ t("Working") }}</h3>
             </div>
           </div>
-          <div ref="experienceCarousel" class="season-carousel" tabindex="0" :aria-label="t('Experience timeline carousel')">
+          <div class="season-carousel" tabindex="0" :aria-label="t('Experience timeline carousel')">
             <div
               v-for="(item, index) in experienceCards"
               :key="`${item.type}-${item.title}`"
@@ -234,7 +192,7 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
             >
               <JourneyCard
                 :item="item"
-                :season-number="index + 1"
+                :episode-number="index + 1"
                 :is-most-recent="item === newestExperience"
                 class="season-card"
                 @select="openJourney(item, index + 1)"
@@ -291,18 +249,6 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
           </div>
           <div class="certificates-heading-tools">
             <p class="certificate-count">{{ t("5 certificates and counting") }}</p>
-            <div class="carousel-arrows certificate-arrows">
-              <button
-                type="button"
-                :aria-label="t('Previous certificates')"
-                @click="scrollCertificates(-1)"
-              ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg></button>
-              <button
-                type="button"
-                :aria-label="t('Next certificates')"
-                @click="scrollCertificates(1)"
-              ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button>
-            </div>
           </div>
         </div>
         <div class="filter-chips certificate-filters" role="group" :aria-label="t('Filter certificates')">
@@ -384,7 +330,7 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
       @click.self="closeJourney"
       @keydown.esc.prevent="closeJourney"
       @cancel.prevent="closeJourney"
-      @close="selectedJourney = null; selectedJourneySeason = 0"
+      @close="selectedJourney = null; selectedJourneyEpisode = 0"
     >
       <template v-if="selectedJourney">
         <button
@@ -395,7 +341,7 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
           @click="closeJourney"
         >×</button>
         <div class="journey-dialog-poster" :class="`journey-poster-${selectedJourney.type}`">
-          <span class="journey-dialog-season" aria-hidden="true">S{{ selectedJourneySeason }}</span>
+          <span class="journey-dialog-episode" aria-hidden="true">E{{ selectedJourneyEpisode }}</span>
           <JourneyTypeIcon :type="selectedJourney.type" />
         </div>
         <div class="dialog-content">

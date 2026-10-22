@@ -517,11 +517,6 @@ html { scroll-padding-top: 80px; }
 .projects-heading-row { align-items: center; margin-bottom: 13px; }
 .projects-heading-row .eyebrow { margin-bottom: 6px; }
 .projects-heading-row .section-copy h2 { font-size: clamp(24px, 3vw, 34px); }
-.carousel-arrows { display: flex; align-items: center; gap: 8px; }
-.carousel-arrows .text-link { margin-right: 12px; }
-.carousel-arrows > button { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: #17181a; color: #fff; font-size: 18px; opacity: 0; pointer-events: none; transition: background .2s ease, transform .2s ease,opacity .2s ease; }
-.projects-inner:hover .carousel-arrows > button, .carousel-arrows:focus-within > button { opacity: 1; pointer-events: auto; }
-.carousel-arrows > button:hover { transform: scale(1.08); background: var(--primary-purple); }
 .project-controls { align-items: center; gap: 10px; margin-bottom: 0; }
 .project-search { width: min(205px, 28%); color: #aaa; }
 .project-search input { height: 31px; padding: 6px 9px; }
@@ -589,8 +584,7 @@ html { scroll-padding-top: 80px; }
   .hero-meta { max-width: 330px; gap: 9px; }
   .projects-inner { padding-top: 27px; }
   .projects-heading-row { align-items: center; }
-  .carousel-arrows .text-link { display: none; }
-  .carousel-arrows > button { width: 31px; height: 31px; opacity: 1; pointer-events: auto; }
+  .projects-github-link { display: none; }
   .project-controls { display: grid; }
   .project-search { width: 100%; max-width: 300px; }
   .projects-grid { gap: 14px; padding: 32px 32px 46px 28px; }
@@ -603,15 +597,12 @@ html { scroll-padding-top: 80px; }
   .contact-layout .section-copy { text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .project-card, .project-hover-panel, .project-poster img, .carousel-arrows > button { transition: none; }
+  .project-card, .project-hover-panel, .project-poster img { transition: none; }
 }
 
 .testimonials-section { border-top: 1px solid var(--line); }
 .testimonials-heading { margin-bottom: 10px; }
 .testimonials-heading .section-copy h2 { margin-bottom: 0; }
-.testimonial-arrows > button { opacity: 0; pointer-events: none; }
-.testimonials-section:hover .testimonial-arrows > button,
-.testimonial-arrows:focus-within > button { opacity: 1; pointer-events: auto; }
 .testimonials-carousel {
   display: flex;
   gap: 18px;
@@ -698,7 +689,6 @@ html { scroll-padding-top: 80px; }
 .testimonial-dialog .testimonial-full-text { white-space: pre-line; }
 @media (max-width: 760px) {
   .testimonials-heading { align-items: center; }
-  .testimonial-arrows > button { width: 31px; height: 31px; opacity: 1; pointer-events: auto; }
   .testimonials-carousel { gap: 14px; padding: 20px 8px 28px; scroll-padding-inline: 8px; }
   .testimonial-card { flex-basis: min(86vw, 400px); min-height: 300px; padding: 21px; }
 }
@@ -729,9 +719,6 @@ html { scroll-padding-top: 80px; }
 .certificates-heading-row .section-copy h3 { margin: 0; color: var(--light); font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: clamp(25px, 3vw, 34px); font-weight: 700; letter-spacing: .02em; }
 .certificates-heading-tools { display: flex; align-items: center; gap: 18px; }
 .certificate-count { margin: 0; color: var(--muted); font-size: 9px; text-align: right; }
-.certificate-arrows > button { opacity: 0; pointer-events: none; }
-.achievements-area:hover .certificate-arrows > button,
-.certificate-arrows:focus-within > button { opacity: 1; pointer-events: auto; }
 .certificate-filters { flex: initial; gap: 7px; margin: 15px 0 0; overflow-x: auto; }
 .certificate-filters button { flex: 0 0 auto; }
 .certificate-carousel {
@@ -865,7 +852,6 @@ html { scroll-padding-top: 80px; }
   .award-icon { width: 68px; flex-basis: 68px; }
   .certificates-heading-tools { gap: 9px; }
   .certificate-count { max-width: 104px; line-height: 1.4; }
-  .certificate-arrows > button { width: 31px; height: 31px; opacity: 1; pointer-events: auto; }
   .certificate-carousel { gap: 13px; padding: 22px 8px 29px; scroll-padding-inline: 8px; }
   .certificate-card { flex-basis: min(78vw, 330px); }
   .certificate-card:active { transform: scale(1.03); }
@@ -947,7 +933,6 @@ html { scroll-padding-top: 80px; }
 .case-study-section + .case-study-section { margin-top: 18px; }
 .dialog-content .case-study-section h3 { margin: 0 0 7px; color: var(--primary-lilac); font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: 16px; }
 .case-study-section .dialog-description { margin: 0; }
-.projects-heading-row .carousel-arrows > button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
 @media (max-width: 760px) {
   .project-card:hover,
   .project-card:focus-within { transform: scale(1.04); }
@@ -989,12 +974,6 @@ html { scroll-padding-top: 80px; }
 }
 
 .toolkit-section .section-heading-row { margin-bottom: 20px; }
-.toolkit-arrows { justify-content: flex-end; margin: -6px 0 4px; }
-.toolkit-arrows > button svg,
-.season-arrows > button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
-.toolkit-arrows > button { opacity: 0; pointer-events: none; }
-.toolkit-section:hover .toolkit-arrows > button,
-.toolkit-arrows:focus-within > button { opacity: 1; pointer-events: auto; }
 .toolkit-grid {
   display: flex;
   gap: 18px;
@@ -1028,9 +1007,6 @@ html { scroll-padding-top: 80px; }
 .journey-column { min-width: 0; }
 .season-row-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .season-row-heading > .eyebrow { margin: 0; }
-.season-arrows > button { opacity: 0; pointer-events: none; }
-.journey-column:hover .season-arrows > button,
-.season-arrows:focus-within > button { opacity: 1; pointer-events: auto; }
 .season-carousel {
   display: flex;
   gap: 16px;
@@ -1074,10 +1050,8 @@ html { scroll-padding-top: 80px; }
 .contact-copy-block .contact-form-disclosure { width: min(650px, 100%); margin: 14px auto 0; padding-top: 12px; border-top: 1px solid var(--line); text-align: left; }
 .contact-copy-block .contact-form-disclosure .contact-form { margin-top: 14px; }
 @media (max-width: 760px) {
-  .toolkit-arrows > button { opacity: 1; pointer-events: auto; }
   .toolkit-grid { gap: 13px; padding: 20px 8px 26px; scroll-padding-inline: 8px; }
   .toolkit-card { flex-basis: min(84vw, 350px); padding: 20px; }
-  .season-arrows > button { opacity: 1; pointer-events: auto; }
   .season-carousel { gap: 13px; padding: 16px 8px 25px; scroll-padding-inline: 8px; }
   .season-card { flex-basis: min(84vw, 350px); }
   .award-card { width: 100%; }
@@ -1178,7 +1152,6 @@ html { scroll-padding-top: 80px; }
 .award-description { line-height: 1.5; }
 .certificate-view-details,
 .certificate-category { line-height: 1.3; }
-.carousel-arrows > button { width: 44px; height: 44px; flex: 0 0 44px; }
 .dialog-close { width: 44px; height: 44px; }
 .testimonial-read-more { min-height: 44px; }
 .certificate-filters button { min-height: 44px; padding: 10px 12px; font-size: 14px; }
@@ -1197,7 +1170,6 @@ html { scroll-padding-top: 80px; }
 .contact-invitation { min-height: 44px; font-size: 14px; }
 .site-footer p { font-size: 13px; }
 .certificate-filters button { min-width: 44px; }
-.certificate-arrows > button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
 @media (max-width: 760px) {
   .site-header .menu-toggle { min-height: 44px; font-size: 14px; }
   .project-card { display: flex; aspect-ratio: auto; flex-direction: column; overflow: hidden; }
@@ -1286,7 +1258,7 @@ html { scroll-padding-top: 80px; }
   height: 50px;
   opacity: .9;
 }
-.season-number {
+.episode-number {
   position: absolute;
   left: 16px;
   bottom: -15px;
@@ -1525,7 +1497,7 @@ html { scroll-padding-top: 80px; }
 .journey-poster-experience { background: linear-gradient(112deg, #1e3541, #222d35 55%, #18191b); }
 .journey-poster-volunteer { background: linear-gradient(112deg, #493614, #342c1c 55%, #18191b); }
 .journey-dialog-poster > svg { z-index: 1; width: 66px; height: 66px; }
-.journey-dialog-season {
+.journey-dialog-episode {
   position: absolute;
   left: 20px;
   bottom: -23px;

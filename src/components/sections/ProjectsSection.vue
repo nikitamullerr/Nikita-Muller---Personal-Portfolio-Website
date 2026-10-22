@@ -5,23 +5,12 @@ import ProjectCard from "../cards/ProjectCard.vue";
 import { projects } from "../../data/portfolio.js";
 
 const { t } = usePortfolio();
-const carousel = ref(null);
 const projectDialog = ref(null);
 const closeButton = ref(null);
 const selectedProject = ref(null);
 
 function hasProjectValue(value) {
   return Boolean(value) && !value.startsWith("TODO:");
-}
-
-function scrollCarousel(direction) {
-  const firstCard = carousel.value?.querySelector(".ranked-project");
-  if (!firstCard) return;
-  const gap = Number.parseFloat(getComputedStyle(carousel.value).columnGap) || 0;
-  carousel.value.scrollBy({
-    left: direction * (firstCard.getBoundingClientRect().width + gap),
-    behavior: "smooth",
-  });
 }
 
 async function openProject(project) {
@@ -46,23 +35,14 @@ function closeProject() {
           <p class="eyebrow">{{ t("TOP 5 · SELECTED WORK") }}</p>
           <h2>{{ t("Top 5 projects") }}</h2>
         </div>
-        <div class="carousel-arrows">
-          <a
-            class="text-link"
-            href="https://github.com/nikitamullerr"
-            target="_blank"
-            rel="noopener noreferrer"
-          >{{ t("Explore my GitHub") }} <span aria-hidden="true">↗</span></a>
-          <button type="button" :aria-label="t('Previous projects')" @click="scrollCarousel(-1)">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
-          </button>
-          <button type="button" :aria-label="t('Next projects')" @click="scrollCarousel(1)">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-          </button>
-        </div>
+        <a
+          class="text-link projects-github-link"
+          href="https://github.com/nikitamullerr"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{{ t("Explore my GitHub") }} <span aria-hidden="true">↗</span></a>
       </div>
       <div
-        ref="carousel"
         id="project-results"
         class="projects-grid"
         tabindex="0"
