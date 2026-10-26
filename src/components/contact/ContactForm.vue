@@ -5,7 +5,7 @@ const { t } = usePortfolio();
 
 <template>
   <form
-    action="https://formspree.io/f/xgoqgnql"
+    action="https://formspree.io/f/mvkkkzye"
     method="post"
     class="contact-form glass"
   >

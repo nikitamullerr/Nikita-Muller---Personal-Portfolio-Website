@@ -15,7 +15,7 @@ import {
 const { t } = usePortfolio();
 const educationCards = [...education, comingSoonJourney];
 const experienceCards = [...experiences, comingSoonJourney];
-const certificateFilters = ["All", "AI", "Cybersecurity", "Data"];
+const certificateFilters = ["All", "AI", "Cybersecurity", "Data", "Web Development"];
 const activeCertificateFilter = ref("All");
 const today = ref(new Date());
 const certificateCarousel = ref(null);
@@ -224,13 +224,11 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
           <h2>{{ t("Certifications & achievements") }}</h2>
         </div>
         <article class="award-card glass">
-          <div class="award-icon" aria-hidden="true">
-            <svg viewBox="0 0 100 100">
-              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
-                <path d="M31 77c-13-4-21-15-22-30 7 1 13 5 17 11M30 66c-12-1-20-9-23-21 8 0 14 3 19 9M32 54c-10-3-15-11-15-22 7 2 12 6 16 12M69 77c13-4 21-15 22-30-7 1-13 5-17 11M70 66c12-1 20-9 23-21-8 0-14 3-19 9M68 54c10-3 15-11 15-22-7 2-12 6-16 12"/>
-                <path d="M38 34h24v8c0 9-5 15-12 17-7-2-12-8-12-17v-8Zm0 4h-9c0 9 4 14 13 16m20-16h9c0 9-4 14-13 16M50 59v10m-13 7h26M44 76v-7m12 7v-7"/>
-              </g>
-            </svg>
+          <div class="award-icon">
+            <img
+              :src="codingWizardAward.image"
+              :alt="t(codingWizardAward.title)"
+            />
           </div>
           <div class="award-copy">
             <p class="eyebrow">{{ t("FEATURED AWARD") }}</p>
@@ -248,7 +246,7 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
             <h3>{{ t("Certified") }}</h3>
           </div>
           <div class="certificates-heading-tools">
-            <p class="certificate-count">{{ t("5 certificates and counting") }}</p>
+            <p class="certificate-count">{{ t(`${certificates.length} certificates and counting`) }}</p>
           </div>
         </div>
         <div class="filter-chips certificate-filters" role="group" :aria-label="t('Filter certificates')">

@@ -3,6 +3,8 @@ import machineLearningCertificate from "../../images/Fundamentals of Machine Lea
 import promptEngineeringCertificate from "../../images/Essentials of Prompt Engineering.png";
 import cybersecurityCertificate from "../../images/Introduction to Cybersecurity.png";
 import dataScienceCertificate from "../../images/Introduction to Data Science.png";
+import fullStackCertificate from "../../images/Full Stack Web Development.jpg";
+import codingWizardAwardImage from "../../images/Coding Wizard Award.jpg";
 
 export const links = [
   { id: "home", label: "Home" },
@@ -243,9 +245,21 @@ export const codingWizardAward = {
   issuer: "Life Choices Academy",
   date: "2 October 2026",
   description: "Awarded during my Full Stack Web Development programme.",
+  image: codingWizardAwardImage,
 };
 
 export const certificates = [
+  {
+    title: "Full Stack Web Development",
+    issuer: "Life Choices Academy",
+    issuerMonogram: "LCA",
+    issuerKey: "life-choices",
+    issueDate: "2 Oct 2026",
+    issueMonth: "2026-10",
+    category: "Web Development",
+    image: fullStackCertificate,
+    learned: "",
+  },
   {
     title: "Responsible Artificial Intelligence Practices",
     issuer: "Amazon Web Services (AWS)",

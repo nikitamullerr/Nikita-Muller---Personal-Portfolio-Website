@@ -420,6 +420,13 @@ h2 > span { color: var(--light); font-weight: inherit; }
 .contact-form-disclosure { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 12px; color: var(--muted); font-size: 10px; }
 .contact-form-disclosure summary { width: fit-content; cursor: pointer; color: var(--primary-purple); }
 .contact-form-disclosure .contact-form { max-width: 650px; margin-top: 20px; }
+.contact-widget { position: fixed; z-index: 35; right: 22px; bottom: 78px; display: grid; justify-items: end; gap: 10px; }
+.contact-widget-toggle { min-height: 46px; padding: 12px 20px; border: 1px solid var(--primary-lilac); border-radius: 24px; background: var(--primary-lilac); color: #180c20; box-shadow: 0 6px 22px #0005; font-size: 13px; font-weight: 700; }
+.contact-widget-toggle:hover { background: #e1c6f0; }
+.contact-widget-panel { position: relative; width: min(420px, calc(100vw - 32px)); max-height: max(120px, min(calc(100dvh - 150px), 700px)); overflow-y: auto; border: 1px solid var(--line); border-radius: 16px; background: #0c0d0e; box-shadow: 0 18px 55px #0009; }
+.contact-widget-panel .contact-form { padding: 24px; }
+.contact-widget-panel .contact-form h3 { padding-right: 28px; }
+.contact-widget-close { position: absolute; z-index: 1; top: 10px; right: 10px; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); color: var(--light); font-size: 24px; }
 .site-footer { width: min(1120px, calc(100% - 72px)); margin: 0 auto; border-color: var(--line); color: var(--muted); font-size: 9px; }
 .site-footer a, .footer-dot { color: var(--primary-purple); }
 @media (max-width: 1000px) {
@@ -710,6 +717,7 @@ html { scroll-padding-top: 80px; }
 }
 .award-icon { display: grid; width: clamp(76px, 12vw, 106px); flex: 0 0 clamp(76px, 12vw, 106px); place-items: center; color: var(--primary-purple); }
 .award-icon svg { display: block; width: 100%; height: auto; }
+.award-icon img { display: block; width: 100%; height: auto; border-radius: 6px; }
 .award-copy .eyebrow { margin-bottom: 7px; }
 .award-copy h4 { margin: 0 0 9px; color: var(--light); font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: clamp(22px, 3vw, 30px); letter-spacing: .01em; }
 .award-issuer { margin: 0 0 5px; color: var(--light); font-size: 11px; }

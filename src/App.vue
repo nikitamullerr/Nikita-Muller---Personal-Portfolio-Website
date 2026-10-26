@@ -4,6 +4,7 @@ import SiteHeader from "./components/layout/SiteHeader.vue";
 import SiteFooter from "./components/layout/SiteFooter.vue";
 import ReadingProgress from "./components/controls/ReadingProgress.vue";
 import BackToTop from "./components/controls/BackToTop.vue"; 
+import ContactWidget from "./components/contact/ContactWidget.vue";
 import PortfolioView from "./views/PortfolioView.vue";
 
 const { t } = providePortfolio();
@@ -16,4 +17,5 @@ const { t } = providePortfolio();
   <PortfolioView />
   <SiteFooter />
   <BackToTop />
+  <ContactWidget />
 </template>
