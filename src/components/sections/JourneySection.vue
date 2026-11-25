@@ -15,7 +15,7 @@ import {
 const { t } = usePortfolio();
 const educationCards = [...education, comingSoonJourney];
 const experienceCards = [...experiences, comingSoonJourney];
-const certificateFilters = ["All", "AI", "Cybersecurity", "Data", "Web Development"];
+const certificateFilters = ["All", "AI", "Cybersecurity", "Data", "Web Development", "Professional"];
 const activeCertificateFilter = ref("All");
 const today = ref(new Date());
 const certificateCarousel = ref(null);
@@ -294,6 +294,7 @@ onUnmounted(() => window.clearTimeout(dateRefreshTimer));
         >×</button>
         <div class="dialog-content">
           <img
+            v-if="selectedCertificate.image"
             class="certificate-dialog-image"
             :src="selectedCertificate.image"
             :alt="t(selectedCertificate.title)"

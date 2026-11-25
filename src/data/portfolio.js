@@ -5,6 +5,9 @@ import cybersecurityCertificate from "../../images/Introduction to Cybersecurity
 import dataScienceCertificate from "../../images/Introduction to Data Science.png";
 import fullStackCertificate from "../../images/Full Stack Web Development.jpg";
 import codingWizardAwardImage from "../../images/Coding Wizard Award.jpg";
+import scrumCertificate from "../../images/Nikita Muller_Scrum Fundamentals.png";
+import reactCertificate from "../../images/React Certificate_Nikita Muller.png";
+import firebaseCertificate from "../../images/Learn Firebase_Nikita Muller.png";
 
 export const links = [
   { id: "home", label: "Home" },
@@ -197,6 +200,17 @@ export const education = [
 ];
 export const experiences = [
   {
+    type: "experience",
+    title: "Software Developer Intern — Product Owner",
+    organisation: "Life Choices",
+    location: "Cape Town",
+    dateRange: "October 2026 — Present",
+    description:
+      "Working as a Software Developer Intern and Product Owner, contributing to product planning and full-stack development.",
+    award: "",
+    sortDate: "2026-10",
+  },
+  {
     type: "volunteer",
     title: "Deputy of Community Engagement",
     organisation: "Rosebank College",
@@ -249,6 +263,39 @@ export const codingWizardAward = {
 };
 
 export const certificates = [
+  {
+    title: "Scrum Fundamentals",
+    issuer: "ScrumStudy",
+    issuerMonogram: "S",
+    issuerKey: "scrum",
+    issueDate: "Nov 2026",
+    issueMonth: "2026-11",
+    category: "Professional",
+    image: scrumCertificate,
+    learned: "",
+  },
+  {
+    title: "Build Your First React Website",
+    issuer: "Coursera",
+    issuerMonogram: "C",
+    issuerKey: "coursera",
+    issueDate: "2026",
+    issueMonth: "2026-10",
+    category: "Web Development",
+    image: reactCertificate,
+    learned: "",
+  },
+  {
+    title: "Learn Firebase",
+    issuer: "Coursera",
+    issuerMonogram: "C",
+    issuerKey: "coursera",
+    issueDate: "2026",
+    issueMonth: "2026-10",
+    category: "Web Development",
+    image: firebaseCertificate,
+    learned: "",
+  },
   {
     title: "Full Stack Web Development",
     issuer: "Life Choices Academy",

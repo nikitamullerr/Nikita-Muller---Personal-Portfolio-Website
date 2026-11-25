@@ -122,6 +122,7 @@ h2 > span { display: block; font-weight: 350; color: var(--primary-lilac); margi
 .certificate-list p { font-size: 12px; margin: 0; }
 .certificate-list .eyebrow { margin: 0 0 0 auto; font-size: 9px; text-align: right; }
 .email-link { color: var(--primary-lilac); font-size: 15px; display: inline-block; padding: 14px 0; overflow-wrap: anywhere; }
+.phone-link { display: inline-block; padding: 0 0 14px; color: var(--primary-lilac); font-size: 15px; }
 .location { font-size: 12px; }
 .social-links { display: flex; gap: 25px; color: var(--primary-lilac); font-size: 13px; margin-top: 25px; }
 .contact-form { padding: 30px; }
@@ -779,6 +780,8 @@ html { scroll-padding-top: 80px; }
 }
 .certificate-poster--aws { background: linear-gradient(135deg, #462510 0%, #261a14 42%, #121314 100%); }
 .certificate-poster--cisco { background: linear-gradient(135deg, #123047 0%, #18232c 42%, #121314 100%); }
+.certificate-poster--scrum { background: linear-gradient(135deg, #5a1d25 0%, #2f171b 42%, #121314 100%); }
+.certificate-poster--coursera { background: linear-gradient(135deg, #173c68 0%, #18273a 42%, #121314 100%); }
 .certificate-monogram {
   position: absolute;
   top: 15px;

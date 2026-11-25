@@ -18,6 +18,7 @@ const { t } = usePortfolio();
     <a class="email-link" href="mailto:nikitamuller1005@gmail.com"
       >nikitamuller1005@gmail.com ↗</a
     >
+    <a class="phone-link" href="tel:06329657333">06329657333</a>
     <CopyEmailButton />
     <p class="location">{{ t("Cape Town, South Africa") }}</p>
     <div class="social-links">

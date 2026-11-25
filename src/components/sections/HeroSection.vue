@@ -38,7 +38,7 @@ function closeTrailer() {
             </svg>
             {{ t("Award-winning") }}
           </span>
-          <span>{{ t("Web Â· Python Â· Systems") }}</span>
+          <span>{{ t("Web · Python · Systems") }}</span>
         </div>
         <p class="hero-role">{{ t("Business mind. Developer heart.") }}</p>
         <p class="hero-description">
@@ -48,6 +48,13 @@ function closeTrailer() {
           <button v-if="showPlayButton" class="hero-contact hero-play" type="button" @click="openTrailer">
             <span aria-hidden="true">▶</span> {{ t("Watch Trailer") }}
           </button>
+          <a
+            class="hero-contact hero-cv"
+            href="/Nikita%20Muller-CV.pdf"
+            download="Nikita Muller-CV.pdf"
+          >
+            <span aria-hidden="true">↓</span> {{ t("Download CV") }}
+          </a>
           <a class="hero-contact hero-more" href="#about" @click="navigate('about')">
             <span aria-hidden="true">ⓘ</span> {{ t("More Info") }}
           </a>
